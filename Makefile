@@ -1,5 +1,5 @@
 PKG_NAME := nocasedict
-URL = https://files.pythonhosted.org/packages/5d/be/0f21bb00ad477ead1bcc56b803f5be8b5b91268f60bd835609ac70b14454/nocasedict-0.5.0.tar.gz
+URL = https://files.pythonhosted.org/packages/f4/17/6fb5fb09b0161bf976229ed884e3b21269b10b38ef536cb415e727031c86/nocasedict-1.0.0.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
