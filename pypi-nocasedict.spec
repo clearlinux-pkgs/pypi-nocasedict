@@ -4,7 +4,7 @@
 #
 Name     : pypi-nocasedict
 Version  : 1.0.4
-Release  : 25
+Release  : 26
 URL      : https://files.pythonhosted.org/packages/69/25/ac0d2b3e2ce2258c5ea080e6dbb72f6c5ce6891506f0c8865890398bc5b1/nocasedict-1.0.4.tar.gz
 Source0  : https://files.pythonhosted.org/packages/69/25/ac0d2b3e2ce2258c5ea080e6dbb72f6c5ce6891506f0c8865890398bc5b1/nocasedict-1.0.4.tar.gz
 Summary  : A case-insensitive ordered dictionary for Python
