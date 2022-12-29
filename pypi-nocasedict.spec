@@ -4,7 +4,7 @@
 #
 Name     : pypi-nocasedict
 Version  : 1.0.4
-Release  : 28
+Release  : 29
 URL      : https://files.pythonhosted.org/packages/69/25/ac0d2b3e2ce2258c5ea080e6dbb72f6c5ce6891506f0c8865890398bc5b1/nocasedict-1.0.4.tar.gz
 Source0  : https://files.pythonhosted.org/packages/69/25/ac0d2b3e2ce2258c5ea080e6dbb72f6c5ce6891506f0c8865890398bc5b1/nocasedict-1.0.4.tar.gz
 Summary  : A case-insensitive ordered dictionary for Python
@@ -15,6 +15,9 @@ Requires: pypi-nocasedict-python = %{version}-%{release}
 Requires: pypi-nocasedict-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
 BuildRequires : pypi(six)
+# Suppress stripping binaries
+%define __strip /bin/true
+%define debug_package %{nil}
 
 %description
 nocasedict - A case-insensitive ordered dictionary for Python
@@ -60,15 +63,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1659712035
+export SOURCE_DATE_EPOCH=1672293184
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
@@ -85,7 +88,7 @@ popd
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pypi-nocasedict
-cp %{_builddir}/nocasedict-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/pypi-nocasedict/b386b371ce94933e63ced1052aa72a60da5485ff
+cp %{_builddir}/nocasedict-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/pypi-nocasedict/b386b371ce94933e63ced1052aa72a60da5485ff || :
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
